@@ -68,6 +68,9 @@ public class CatInterface {
 		System.out.print("Type cat's weight: ");
 		cat.setWeight(getFloatWeightFromUser());
 
+		cat.introduceYourself();
+		CatDao catDao = new CatDao();
+		catDao.addCat(cat);
 	}
 
 }
