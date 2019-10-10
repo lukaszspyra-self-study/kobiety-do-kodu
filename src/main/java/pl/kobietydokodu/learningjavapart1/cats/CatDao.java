@@ -4,11 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CatDao {
-	List<Cat> catList = new ArrayList<>();
+	private List<Cat> catList = new ArrayList<>();
 
-	protected void addCat(Cat cat) {
+	public List<Cat> getCatList() {
+		return catList;
+	}
+
+	protected void addCatToTheList(Cat cat) {
 		catList.add(cat);
 		System.out.println("Cat added to the List.");
 	}
+	
+
 
 }
