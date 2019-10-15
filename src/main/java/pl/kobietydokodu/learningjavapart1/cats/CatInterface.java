@@ -15,8 +15,63 @@ public class CatInterface {
 	public final static String CHOICEREGEX = "[12xX]";
 	protected static CatDao catDao = new CatDao();
 
+	public static void main(String[] args) {
+		String newLine = System.getProperty("line.separator");
+		while (true) {
+			System.out.println("Hi! What do you want to do? Type:" + newLine + "1 - to add cat" + newLine
+					+ "2 - to show cat" + newLine + "x - to close the programme");
+			String userChoiceString = getMenu12XChoiceFromUser();
+			if (userChoiceString.equals("1")) {
+				createCat();
+			} else if (userChoiceString.equals("2")) {
+				if (catDao.getCatList().isEmpty()) {
+					System.out.println("Cat list is empty, add cat first...");
+					continue;
+				}
+				for (int i = 0; i < catDao.getCatList().size(); i++) {
+					System.out.println(catDao.getCatList().get(i).getCatName() + " is number: " + i);
+				}
+				System.out.print("Type cat number to introduce itself: ");
+				System.out.println(catDao.getCatList().get(getCatNumberFromUser()).introduceYourself());
+			} else if (userChoiceString.equalsIgnoreCase("x")) {
+				System.out.println("Programme will close now...");
+				break;
+			}
+		}
+	}
+
+	public static String getMenu12XChoiceFromUser() {
+		Pattern userChoice12XPattern = Pattern.compile(CHOICEREGEX);
+		String userChoiceString = getInputFromUser();
+		Matcher choiceStringMatcher = userChoice12XPattern.matcher(userChoiceString);
+		while (!choiceStringMatcher.matches()) {
+			System.out.println("Not correct choice! Try again 1, 2, or x");
+			userChoiceString = getInputFromUser();
+			choiceStringMatcher = userChoice12XPattern.matcher(userChoiceString);
+		}
+		return userChoiceString;
+	}
+
 	public static String getInputFromUser() {
 		return inputScanner.nextLine();
+	}
+
+	public static void createCat() {
+		Cat cat = new Cat();
+
+		System.out.print("Type cat name: ");
+		cat.setCatName(getInputFromUser());
+
+		System.out.print("Type owner name: ");
+		cat.setOwnerName(getInputFromUser());
+
+		System.out.print("Type cat's date of birth in format YYYY.MM.DD: ");
+		cat.setDateOfBirth(getDateFromUserInFormatYYYY_MM_DD());
+
+		System.out.print("Type cat's weight: ");
+		cat.setWeight(getFloatWeightFromUser());
+
+		catDao.addCatToTheList(cat);
 	}
 
 	public static Date getDateFromUserInFormatYYYY_MM_DD() {
@@ -56,36 +111,6 @@ public class CatInterface {
 		return floatWeight;
 	}
 
-	public static String getMenu12XChoiceFromUser() {
-		Pattern userChoice12XPattern = Pattern.compile(CHOICEREGEX);
-		String userChoiceString = getInputFromUser();
-		Matcher choiceStringMatcher = userChoice12XPattern.matcher(userChoiceString);
-		while (!choiceStringMatcher.matches()) {
-			System.out.println("Not correct choice! Try again 1, 2, or x");
-			userChoiceString = getInputFromUser();
-			choiceStringMatcher = userChoice12XPattern.matcher(userChoiceString);
-		}
-		return userChoiceString;
-	}
-
-	public static void createCat() {
-		Cat cat = new Cat();
-
-		System.out.print("Type cat name: ");
-		cat.setCatName(getInputFromUser());
-
-		System.out.print("Type owner name: ");
-		cat.setOwnerName(getInputFromUser());
-
-		System.out.print("Type cat's date of birth in format YYYY.MM.DD: ");
-		cat.setDateOfBirth(getDateFromUserInFormatYYYY_MM_DD());
-
-		System.out.print("Type cat's weight: ");
-		cat.setWeight(getFloatWeightFromUser());
-
-		catDao.addCatToTheList(cat);
-	}
-
 	public static int getCatNumberFromUser() {
 		int catNumberChoice = 0;
 		while (true) {
@@ -103,30 +128,5 @@ public class CatInterface {
 			System.out.println("Try again to type cat number from the list! ");
 		}
 		return catNumberChoice;
-	}
-
-	public static void main(String[] args) {
-		String newLine = System.getProperty("line.separator");
-		while (true) {
-			System.out.println("Hi! What do you want to do? Type:" + newLine + "1 - to add cat" + newLine
-					+ "2 - to show cat" + newLine + "x - to close the programme");
-			String userChoiceString = getMenu12XChoiceFromUser();
-			if (userChoiceString.equalsIgnoreCase("1")) {
-				createCat();
-			} else if (userChoiceString.equalsIgnoreCase("2")) {
-				if (catDao.getCatList().isEmpty()) {
-					System.out.println("Cat list is empty, add cat first...");
-					continue;
-				}
-				for (int i = 0; i < catDao.getCatList().size(); i++) {
-					System.out.println(catDao.getCatList().get(i).getCatName() + " is number: " + i);
-				}
-				System.out.print("Type cat number to introduce itself: ");
-				System.out.println(catDao.getCatList().get(getCatNumberFromUser()).introduceYourself());
-			} else if (userChoiceString.equalsIgnoreCase("x")) {
-				System.out.println("Programme will close now...");
-				break;
-			}
-		}
 	}
 }
