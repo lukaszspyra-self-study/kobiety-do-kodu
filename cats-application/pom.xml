@@ -18,6 +18,12 @@
     <artifactId>spring-core</artifactId>
     <version>5.2.0.RELEASE</version>
   </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>5.2.0.RELEASE</version>
+</dependency>
   <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-shade-plugin -->
   <dependency>
     <groupId>org.apache.maven.plugins</groupId>
