@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xmlns:mvc="http://www.springframework.org/schema/mvc"
  xmlns:context="http://www.springframework.org/schema/context"
  xsi:schemaLocation="
  http://www.springframework.org/schema/mvc 
@@ -12,6 +13,7 @@
 
     <context:component-scan base-package="pl.kobietydokodu" /> <!-- Chcemy automatycznie obsugiwa wszystkie klasy z adnotacjami w tym pakiecie -->
     <context:annotation-config /> <!-- To na przysz, pozwoli nam korzysta z adnotacji take w klasach, ktre bymy skonfigurowali rcznie -->
+	<mvc:annotation-driven />
 
 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
 <property name="prefix"> 

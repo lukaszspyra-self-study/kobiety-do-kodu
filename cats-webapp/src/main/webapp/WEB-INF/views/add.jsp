@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,20 +11,20 @@
 			<table border="1">
 				<tbody>
 					<tr>
-						<th>Imię</th>
-						<td><input type="text" name="imie" /></td>
+						<th>NAme�</th>
+						<td><input type="text" name="catName" /></td>
 					</tr>
 					<tr>
-						<th>Data urodzenia</th>
-						<td><input type="text" name="dataUrodzenia" /></td>
+						<th>Date of Birth</th>
+						<td><input type="text" name="dateOfBirth" /></td>
 					</tr>
 					<tr>
-						<th>Waga</th>
-						<td><input type="text" name="waga" /></td>
+						<th>Weight</th>
+						<td><input type="text" name="weight" /></td>
 					</tr>
 					<tr>
-						<th>Imię opiekuna</th>
-						<td><input type="text" name="imieOpiekuna" /></td>
+						<th>Owner name</th>
+						<td><input type="text" name="ownerName" /></td>
 					</tr>
 					<tr>
 						<td colspan="2" align="right"><input type="submit" value="Dodaj!" /></td>
