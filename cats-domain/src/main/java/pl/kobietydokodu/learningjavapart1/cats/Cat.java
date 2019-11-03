@@ -7,6 +7,7 @@ public class Cat {
 	private Date dateOfBirth;
 	private Float weight;
 	private String ownerName;
+	int catId;
 	
 	public String introduceYourself() {
 		return ("Hi I am cat, my name is "+catName+", I was born on "+dateOfBirth+", my weigth is "+weight+",my owner's name is "+ownerName);
@@ -42,6 +43,14 @@ public class Cat {
 
 	public void setOwnerName(String ownerName) {
 		this.ownerName = ownerName;
+	}
+
+	public int getCatId() {
+		return catId;
+	}
+
+	public void setCatId(int catId) {
+		this.catId = catId;
 	}
 	
 }
